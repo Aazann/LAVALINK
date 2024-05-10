@@ -1,0 +1,125 @@
+server:
+  address: 0.0.0.0
+  http2:
+    enabled: false
+  port: # fill this in . . . .
+
+lavalink:
+  server:
+    sources:
+      http: true
+      local: true
+      vimeo: true
+      twitch: true
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+    filters:
+      volume: true
+      karaoke: true
+      lowPass: true
+      tremolo: true
+      vibrato: true
+      rotation: true
+      equalizer: true
+      timescale: true
+      channelMix: true
+      distortion: true
+    password: 69
+    gc-warnings: true
+    useSeekGhosting: true
+    bufferDurationMs: 400
+    resamplingQuality: HIGH
+    opusEncodingQuality: 10
+    playerUpdateInterval: 5
+    frameBufferDurationMs: 5000
+    trackStuckThresholdMs: 10000
+    soundcloudSearchEnabled: true
+    youtubeConfig:
+      email: # fill this in . . . .
+      password: # fill this in . . . .
+    youtubeSearchEnabled: true
+    youtubePlaylistLoadLimit: 6
+  plugins:
+    - dependency: com.dunctebot:skybot-lavalink-plugin:1.6.3
+      repository: https://maven.lavalink.dev/releases
+      snapshot: false
+    - dependency: com.github.topi314.lavasrc:lavasrc-plugin:4.0.0
+      repository: https://maven.lavalink.dev/releases
+      snapshot: false
+    - dependency: com.github.topi314.lavasearch:lavasearch-plugin:1.0.0
+      repository: https://maven.lavalink.dev/releases
+      snapshot: false
+
+plugins:
+  dunctebot:
+    sources:
+      tts: true
+      clypit: true
+      reddit: true
+      tiktok: true
+      getyarn: true
+      ocremix: true
+      pornhub: true
+      mixcloud: true
+      soundgasm: true
+    ttsLanguage: en-AU
+  lavasrc:
+    providers:
+      - ytsearch:"%ISRC%"
+      - ytsearch:%QUERY%
+    applemusic:
+      countryCode: US
+      mediaAPIToken: # fill this in . . . .
+      albumLoadLimit: 300
+      playlistLoadLimit: 300
+    flowerytts:
+      speed: 1
+      silence: 0
+      audioFormat: mp3
+      translate: false
+      voice: default voice
+    sources:
+      deezer: true
+      spotify: true
+      youtube: true
+      applemusic: true
+      flowerytts: true
+      yandexmusic: true
+    spotify:
+      clientId: # fill this in . . . .
+      clientSecret: # fill this in . . . .
+      countryCode: IN
+      albumLoadLimit: 50
+      playlistLoadLimit: 100
+    yandexmusic:
+      accessToken: # fill this in . . . .
+    deezer:
+      masterDecryptionKey: # fill this in . . . .
+
+logging:
+  file:
+    path: ./logs/
+  level:
+    root: INFO
+    lavalink: INFO
+  logback:
+    rollingpolicy:
+      max-history: 30
+      max-file-size: 1GB
+  request:
+    enabled: true
+    includePayload: true
+    includeHeaders: false
+    maxPayloadLength: 10000
+    includeClientInfo: true
+    includeQueryString: true
+
+sentry:
+  dsn: ""
+  environment: ""
+
+metrics:
+  prometheus:
+    enabled: false
+    endpoint: /metrics
